@@ -1,78 +1,52 @@
 let symbolchar = "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 let capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let lower = "abcdefjhijklmnopqrstuvwxyz";
-let num = "0123456789";
-let amount= parseInt(prompt("how long do you want this password? *must be 8-128 characters long"));
-let lowalert= alert("do you want lower case letters?");
-let capalert= alert("do you want capital letters?");
-let symalert= alert("do you want symbols?");
-let numalert= alert("do you want numbers?")
-let button= document.querySelector("button")
-
-
-if (128>amount<8){
-  alert("can you read? I said between 8-128 charachters chief.");
-  break;
+let num = "1234567890";
+let button = document.querySelector("button");
+let arr = []
+let amount = parseInt(prompt("how long do you want this password? *must be 8-128 characters long"));
+// when prompt is true, the function makes a series of questions
+function alerts(){
+  let capalert = confirm("do you want capital letters?");
+  let lowalert = confirm("do you want lowercase letters?");
+  let symalert = confirm("do you want symbols?");
+  let numalert = confirm("do you want numbers?");
+  numbers = arr.split("")
+if (symalert === true) {
+  arr.push(symbolchar);
 }
-
-// function getRandom(arr) {
-//     var randIndex = Math.floor(Math.random() * arr.length);
-//     var randElement = arr[randIndex];
-//     return randElement;
-//   }
-
-
-// var generateBtn = document.querySelector("#generate");
-
-
-// generateBtn.addEventListener("click", writePassword);
-
-
-
-  function sran(){
-    let symbolran= Math.floor(Math.random()*symbolchar.length)
-    return (symbolchar[symbolran])
-  }
-
-  function cran(){
-    let capitalran= Math.floor(Math.random()*capital.length)
-    return (capital[capitalran])
-  }
-
-  function lran(){
-    let lowerran= Math.floor(Math.random()*lower.length)
-    return (lower[lowerran])
-  }
-  function nran(){
-    let numran= Math.floor(Math.random()* num.length)
-    return(num[numran])
-  }
-
-let arr= [sran(), cran(), lran(), nran()]
-
-for( let i=0; i<amount; i++){
- console.log(Math.floor(Math.random()* arr.length))
+if (lowalert === true) {
+  arr.push(lower);
+}
+if (capalert === true) {
+  arr.push(capital);
+}
+if (numalert === true) {
+  arr.push(num);
+}
+if (arr.length === 0) {
+  alert("bruv choose something")
+}
+  return console.log(numbers)
 }
 
 
 
-button.addEventListener("clicked", function(){
-  let password= '';
-  if (lowalert===false && capalert===false && numalert===false && symalert===false){
-     alert("PICK SOMETHING FOR THE LOVE OF GOD!!!");
+// when questions are done, create a function that randomizes a series of strings to create the password
+let random = Math.floor(Math.random() * arr.length)
+function final() {
+  for (i = 0; i < amount.length; i++) {
+    random.split(i)
   }
-  if (lowalert===true && capalert===false && numalert===false && symalert===false){
-    password=== lran()
-  }
- if (lowalert===true && capalert===true && numalert===false && symalert===false){
-  alert("PICK SOMETHING FOR THE LOVE OF GOD!!!");
 }
-if (lowalert===true && capalert===true && numalert===true && symalert===false){
-  alert("PICK SOMETHING FOR THE LOVE OF GOD!!!");
-}
-if (lowalert===true && capalert===true && numalert===true && symalert===true){
-  alert("PICK SOMETHING FOR THE LOVE OF GOD!!!");
-}
+// when the generate button is clicked a series of alrets and prompts come up
+button.addEventListener("click", function () {
 
-  
-})
+  if (128 > amount && amount > 8) {
+    alerts();
+  }
+  else {
+    alert("your response is invalid")
+  }
+
+});
