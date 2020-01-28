@@ -11,7 +11,6 @@ function alerts(){
   let lowalert = confirm("do you want lowercase letters?");
   let symalert = confirm("do you want symbols?");
   let numalert = confirm("do you want numbers?");
-  numbers = arr.split("")
 if (symalert === true) {
   arr.push(symbolchar);
 }
@@ -27,17 +26,24 @@ if (numalert === true) {
 if (arr.length === 0) {
   alert("bruv choose something")
 }
-  return console.log(numbers)
+let string = arr.toString()
+let split = string.split("");
+return final(split)
 }
 
 
-
 // when questions are done, create a function that randomizes a series of strings to create the password
-let random = Math.floor(Math.random() * arr.length)
-function final() {
-  for (i = 0; i < amount.length; i++) {
-    random.split(i)
-  }
+
+function final(x) {
+  console.log(x)
+  let random = amount[Math.floor(Math.random() * x.length)]
+  random.toString()
+  console.log(random)
+  // for (i = 0; i < amount.length; i++) {
+  //   console.log(amount[i])
+  //   random(i);
+  
+  // }
 }
 // when the generate button is clicked a series of alrets and prompts come up
 button.addEventListener("click", function () {
@@ -45,6 +51,7 @@ button.addEventListener("click", function () {
   if (128 > amount && amount > 8) {
     alerts();
   }
+
   else {
     alert("your response is invalid")
   }
