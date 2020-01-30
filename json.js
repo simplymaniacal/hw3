@@ -3,8 +3,9 @@ let capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let lower = "abcdefjhijklmnopqrstuvwxyz";
 let num = "1234567890";
 let button = document.querySelector("button");
-let arr = []
-let amount = parseInt(prompt("how long do you want this password? *must be 8-128 characters long"));
+let arr = [];
+const amm = prompt("how long do you want this password? *must be 8-128 characters long");
+const amount = parseInt(amm);
 // when prompt is true, the function makes a series of questions
 function alerts(){
   let capalert = confirm("do you want capital letters?");
@@ -26,25 +27,24 @@ if (numalert === true) {
 if (arr.length === 0) {
   alert("bruv choose something")
 }
-let string = arr.toString()
+let string = arr.join('');
 let split = string.split("");
 return final(split)
-}
+};
 
 
 // when questions are done, create a function that randomizes a series of strings to create the password
 
 function final(x) {
-  console.log(x)
-  let random = amount[Math.floor(Math.random() * x.length)]
-  random.toString()
-  console.log(random)
-  // for (i = 0; i < amount.length; i++) {
-  //   console.log(amount[i])
-  //   random(i);
+  let shuffle = x.sort(function(){
+    0.5 - Math.random()
+  })
+  let random = shuffle.splice(0, amount)
+  let str = random.join("")
+  let resultEl = document.getElementById("result")
+  resultEl.innerHTML = str;
   
-  // }
-}
+};
 // when the generate button is clicked a series of alrets and prompts come up
 button.addEventListener("click", function () {
 
@@ -54,6 +54,7 @@ button.addEventListener("click", function () {
 
   else {
     alert("your response is invalid")
+    return;
   }
 
 });
